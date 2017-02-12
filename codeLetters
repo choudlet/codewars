@@ -1,0 +1,38 @@
+function tongues(code) {
+    let vowelArray = ['a', 'i', 'y', 'e', 'o', 'u']
+    let constArray = ['b', 'k', 'x', 'z', 'n', 'h', 'd', 'c', 'w', 'g', 'p', 'v', 'j', 'q', 't', 's', 'r', 'l', 'm', 'f']
+    let codeArray = code.split('')
+    let capArray = codeArray.map(letter => {
+        if (letter === letter.toUpperCase()) {
+            return true;
+        } else return false;
+    })
+
+     return codeArray.map((letter, index) => {
+        let vowelIndex = vowelArray.indexOf(letter.toLowerCase());
+        let constIndex = constArray.indexOf(letter.toLowerCase());
+        if (vowelIndex == -1 && constIndex == -1) {
+            return letter
+        } else if (vowelIndex != -1) {
+            vowelIndex += 3;
+            if (vowelIndex > vowelArray.length -1) {
+                vowelIndex -= vowelArray.length;
+            }
+            if (capArray[index] === true) {
+                return vowelArray[vowelIndex].toUpperCase()
+            } else return vowelArray[vowelIndex];
+
+      } else if (constIndex != -1) {
+          constIndex += 10;
+          if (constIndex > constArray.length-1) {
+              constIndex -= constArray.length;
+          }
+          if (capArray[index] === true) {
+              return constArray[constIndex].toUpperCase()
+          } else return constArray[constIndex];
+
+      }
+
+
+    }).join('')
+}
