@@ -1,0 +1,18 @@
+function sumDigits(num) {
+ let strNum = String(num)
+ let numArr = strNum.split('')
+ let digitLen = numArr.length
+ let newNum = num
+
+   while(digitLen > 1) {
+     newNum = numArr.reduce((a, b) =>{
+       return Number(a) + Number(b)
+     },0)
+     strNum = String(newNum)
+     numArr = strNum.split('')
+     digitLen = numArr.length
+   }
+   return newNum
+}
+
+console.log(sumDigits(456));
